@@ -1,10 +1,18 @@
 import './App.css'
+import { useSelector } from 'react-redux'
+import { RootState } from './redux/store'
+import { ChooseForm, Game } from './components/exports'
+
 
 function App() {
-
+  const currentForm = useSelector((state: RootState) => state.form.form)
   return (
     <>
-      <h1>Hello world!</h1>
+      {
+        currentForm === ''
+          ? <ChooseForm />
+          : <Game />
+      }
     </>
   )
 }
